@@ -4,7 +4,7 @@ source "$(dirname $BASH_SOURCE)"/om-cmd
 
 om_cmd curl -p /api/v0/deployed/director/manifest > director_manifest.json
 
-BOSH_CLIENT="ops_manager"
+BOSH_CLIENT="bbr_client"
 BOSH_CLIENT_SECRET=$(jq -r '.jobs[] | select(.name == "bosh") | .properties.uaa.clients.ops_manager.secret' director_manifest.json)
 BOSH_ADDRESS=$(jq -r '.jobs[] | select(.name == "bosh") | .properties.director.address' director_manifest.json)
 
